@@ -18,3 +18,19 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+.history {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  height: 500px;
+  width: 300px;
+  background: #395151;
+  border-radius: 5px;
+  padding: 20px;
+  color: white;
+  border: 5px solid #4e9090;
+  font-size: 24px;
+  word-break: break-word;
+  overflow: auto;
+}

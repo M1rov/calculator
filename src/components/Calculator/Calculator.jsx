@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
 import './Calculator.scss'
 
-const Calculator = () => {
+const Calculator = ({setHistory}) => {
   const [input, setInput] = useState('');
 
   const calculate = () => {
     // eslint-disable-next-line no-eval
-    setInput(prev => eval(prev));
-
+    const result = eval(input);
+    setHistory(prev => [...prev, `${input} = ${result}`])
+    setInput(result);
   }
+
+  const isLastNumber = () => /\d$/.test(input);
 
   return (
     <div className="calculator">
@@ -45,7 +48,10 @@ const Calculator = () => {
           </td>
           <td>
             <button
-              onClick={() => setInput(prev => `${prev}+`)}
+              onClick={() => isLastNumber() ?
+                setInput(prev => `${prev}+`) :
+                setInput(prev => `${prev.slice(0,-1)}+`)
+              }
             >
               +
             </button>
@@ -75,7 +81,10 @@ const Calculator = () => {
           </td>
           <td>
             <button
-              onClick={() => setInput(prev => `${prev}-`)}
+              onClick={() => isLastNumber() ?
+                setInput(prev => `${prev}-`) :
+                setInput(prev => `${prev.slice(0,-1)}-`)
+              }
             >
               -
             </button>
@@ -105,7 +114,10 @@ const Calculator = () => {
           </td>
           <td>
             <button
-              onClick={() => setInput(prev => `${prev}/`)}
+              onClick={() => isLastNumber() ?
+                setInput(prev => `${prev}/`) :
+                setInput(prev => `${prev.slice(0,-1)}/`)
+              }
             >
               ÷
             </button>
@@ -135,7 +147,10 @@ const Calculator = () => {
           </td>
           <td>
             <button
-              onClick={() => setInput(prev => `${prev}*`)}
+              onClick={() => isLastNumber() ?
+                setInput(prev => `${prev}*`) :
+                setInput(prev => `${prev.slice(0,-1)}*`)
+              }
             >
               x
             </button>
