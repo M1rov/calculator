@@ -1,0 +1,34 @@
+.calculator {
+  background: #696969;
+  padding: 30px;
+  border-radius: 10px;
+  font-size: 32px;
+  color: white;
+
+  &__screen {
+    color: #343232;
+    background: #cdcdcd;
+    width: 100%;
+    text-align: right;
+    padding: 10px 20px;
+  }
+
+
+  &__operators {
+    margin-top: 20px;
+    width: 100%;
+
+    border-spacing: 20px;
+  }
+
+  tr {
+    text-align: center;
+
+    td button{
+      padding: 15px 20px;
+      background: #323232;
+      width: 80px;
+      border: 1px solid black;
+    }
+  }
+}
